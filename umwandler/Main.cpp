@@ -21,22 +21,20 @@ int main()
 	double tempf;
 	char re;
 	int var;
-	
+
 	cout << "what do u ant to calulate?\n";
 	cout << "1:Celsius to fahrenheit\n";
 	cout << "2:fahrenheit to Celsius\n";
 	cin >> var;
-	while (var > 2)
+	while (var > 2 || cin.fail())
 	{
 		cout << "bitch i said pick between 1 and 2 god damn u stupid?\n";
+		cin.clear();
+		cin.ignore(1000, '\n');
 		cin >> var;
 	}
 
-	if (cin.fail())
-	{
-		cout << "you dump bich? I SAID 1 OR 2!\n";
-	}
-	
+
 	if (var == 1)
 	{
 
@@ -63,7 +61,7 @@ int main()
 		cout << "you imputed " << tempf << "F \n";
 		cout << "\n";
 
-		cout << "the answer in Celsius = " << (tempf  - 32) / 1.8 << "F\n";
+		cout << "the answer in Celsius = " << (tempf - 32) / 1.8 << "F\n";
 	}
 
 	cout << "\n";
@@ -71,22 +69,29 @@ int main()
 	cout << "y for Yes\n";
 	cout << "n for No\n";
 
+	cin.clear();
 	cin >> re;
 
-	system("CLS");
 
-	if (re == 'y')
+
+	while (re != 'y' && re != 'Y' && re != 'n' && re != 'N' || cin.fail())
 	{
+		cout << "bitch wtf get out of here i dont have time for this shit do you want to calculate again or not ?\n";
+		cin.clear();
+		cin.ignore(1000, '\n');
+		cin >> re;
+		break;
+	}
+
+	if (re == 'y' || re == 'Y')
+	{
+		system("CLS");
 		return main();
 
 	}
-	else if (re == 'n')
+	else if (re == 'n' || re == 'N')
 	{
 		cout << "ok then have a nice day\n";
-	} 
-	else if (cin.fail())
-	{
-		cout << "bitch wtf get out of here i dont have time for this shit\n";
 	}
 
 	system("Pause");
